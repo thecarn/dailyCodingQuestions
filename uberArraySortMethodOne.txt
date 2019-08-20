@@ -1,0 +1,30 @@
+function product(array) {
+  var newArray = []; 
+  for (i=0; i < array.length; i++) {
+    var product = 0;
+    for (j=0; j < array.length; j++) {
+      if(i === j) {
+        continue;
+      }
+      if (product === 0) {
+        product = (array[i] * array[j]);
+      } else {
+        product = (product * array[j]);
+      }
+    }
+    product = product / array[i];
+    newArray.push(product);
+  }
+  return sortArrayAscending(newArray);
+}
+function sortArrayAscending(newArray) {
+  newArray.sort(function(a, b){return a-b});
+  return newArray;
+}
+function sortArraydescending(newArray) {
+  newArray.sort(function(a, b){return b-a});
+  return newArray;
+}
+console.log(product([1,2,3,4,5])); //expected output [120, 60, 40, 30, 24]
+console.log(product([3,2,1])); // expected output [2,3,6]
+console.log(product([2,3,5,7]));
