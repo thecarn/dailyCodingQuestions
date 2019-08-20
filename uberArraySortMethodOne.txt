@@ -1,18 +1,35 @@
+/*
+Good morning! Here's your coding interview problem for today.
+
+This problem was asked by Uber.
+
+Given an array of integers, return a new array such that each element at index i of the new array is the product of all the numbers in the original array except the one at i.
+
+For example, if our input was [1, 2, 3, 4, 5], the expected output would be [120, 60, 40, 30, 24]. If our input was [3, 2, 1], the expected output would be [2, 3, 6].
+
+Follow-up: what if you can't use division?
+*/
 function product(array) {
   var newArray = []; 
   for (i=0; i < array.length; i++) {
+    //initialize variable to hold total product from inputed array
     var product = 0;
     for (j=0; j < array.length; j++) {
       if(i === j) {
+	//validates that the same number doesn't multiply itself
         continue;
       }
       if (product === 0) {
+	//gives product a value from two numbers in array since product === 0
         product = (array[i] * array[j]);
       } else {
+	//multiplies the product of every number before it to the next element in the array
         product = (product * array[j]);
       }
     }
+    //divides the product of whole array by the element to ignore
     product = product / array[i];
+    //inserts into new array 
     newArray.push(product);
   }
   return sortArrayAscending(newArray);
@@ -27,4 +44,3 @@ function sortArraydescending(newArray) {
 }
 console.log(product([1,2,3,4,5])); //expected output [120, 60, 40, 30, 24]
 console.log(product([3,2,1])); // expected output [2,3,6]
-console.log(product([2,3,5,7]));
