@@ -1,0 +1,1 @@
+All questions are answered in javascript for this repository. I get my questions from https://www.dailycodingproblem.com 
